@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  
+  <title>雙子葉莖的成長</title>
+  <style>
+  
+  p {text-align: center;}
+  div {text-align: center;}
+  </style>
+
+
+<style>
+
+</style>
+</head>
+
+<body>
+<p>
+<img id="theImage" src="stem/01.jpg" width="800" >
+</p>
+<p>
+<input type="button" id="theButton" value="Previous"  onclick="picturePrevious()">
+<input type="button" id="theButton" value="Next"  onclick="pictureNext()">
+</p>
+<p>
+<input type="button" id="theButton" value="Loop"  onclick="pictureLoop()">
+<input type="button" id="theButton" value="Stop"  onclick="stopLoop()">
+</p>
+
+
+
+<script>
+
+	var imgArray = [
+		'stem/01.jpg',
+		'stem/02.jpg',
+		'stem/03.jpg',
+		'stem/04.jpg',
+		'stem/05.jpg',
+		'stem/06.jpg',
+		'stem/07.jpg',
+		'stem/08.jpg',
+		'stem/09.jpg',
+		'stem/10.jpg',
+		'stem/11.jpg',
+		'stem/12.jpg',
+		'stem/13.jpg',];
+
+
+	
+	let counter = 0;
+
+	function picturePrevious(){
+		counter--; 
+		if (counter < 0 ){
+			counter = imgArray.length -1 ;}		
+		document.getElementById("theImage").src= imgArray[counter] ;
+	}	
+	
+	function pictureNext(){
+		counter++; 
+		if (counter >= imgArray.length - 1){
+			counter = 0;}
+
+		document.getElementById("theImage").src= imgArray[counter] ;
+	}
+
+	function pictureLoop(){
+		
+
+		slideShow();
+	}	
+
+	
+	
+
+	let imgDuration = 200;
+	
+	function slideShow() {
+
+		setTimeout(function() {
+			document.getElementById('theImage').src = imgArray[counter];
+			//document.getElementById('theImage').className = "";
+			},imgDuration);
+
+
+		counter++;
+		
+		myVar = setTimeout(slideShow, imgDuration);
+		
+		if (counter == imgArray.length) { 
+			counter = 0; 
+			}
+		
+		}
+	
+	function stopLoop() {
+		clearTimeout(myVar);	
+	}
+
+	
+	
+</script>
+
+</body>
+</html>
